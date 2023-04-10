@@ -129,7 +129,19 @@
   
   /* Dark Navy */
   
-  color:  rgba(48, 59, 89, 0.5);
+  color:  rgba(48, 59, 89, 1);
+}
+.color1-red {
+  color: red;
+}
+.color1-orange {
+  color: orange;
+}
+.color1-green {
+  color: green;
+}
+.color1-blue {
+  color: blue;
 }
 .rating{
   padding-right: 8px;
@@ -142,7 +154,6 @@
   
   /* Dark Navy */
 
-  color: #303B59 !important;
 }
 .item1{
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), #FF5555;
@@ -197,12 +208,10 @@
   background: #303B59;
 }
 @media only screen and (max-width:425px) {
-  body{
-    background: #fff;
-  }
     .app{
       display: flex;
       flex-direction: column;
       align-items: center;
+      box-shadow: 0px 30px 60px rgba(61, 108, 236, 0.15);
     }
 }

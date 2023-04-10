@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import brain from './image/memory.svg'
+  import brain from './image/memory.svg'
 import reation from './image/vector.svg'
 import visual from './image/visual.svg'
 import chat from '../src/image/reaction.svg';
@@ -44,37 +44,66 @@ function App() {
       setCount0(100);
     }
   }
+  function getStatus() {
+    if (count0 == 100){
+      return ("Success✅")
+    }else if(count0 >= 90) {
+      return ('Great👏');
+    } else if (count0 >= 75) {
+      return ('Fine🫡');
+    } else if (count0 >= 65) {
+      return ('Nice👌');
+    } else {
+      return ('Good👍🏻');
+    }
+  }
+
+  function btnclick() {
+    const app = document.querySelector(".app");
+    app.remove();
+  
+    const newCard = document.createElement("div");
+    newCard.className = "card";
+    newCard.innerHTML = " <h1>DONE✅</h1>";
+    document.body.appendChild(newCard);
+  }
+  
+
+  
   return (
     <div className="container">
-      <div className="app">
+      <div className="app ">
         <div className="app-left">
           <h2 className='title'>Your Result</h2>
           <div onClick={click0} className='circle'>
               <h1 className='number'>{count0}</h1>
               <span className='full-number'>of 100</span>
           </div>
-          <h2 className='status'>Great</h2>
-          <p>Your performance exceed 65% <br /> of the people conducting the test here!</p>
+          <h2 className="status">{getStatus()}</h2>
+          <p>
+            Your performance exceeds {getStatus() === "Success✅" ? "100%" : "90%"&& getStatus() === "Great👏" ? "90%" : "75%" && getStatus() === "Fine🫡" ? "75%" : "65%" && getStatus() === "Nice👌" ? "65%" : "50%"}{" "}
+            of the people conducting the test here!
+          </p>
         </div>
         <div className="app-right">
                   <h2 className="title-r">Summary</h2>
                   <ul className='list'>
-                    <li onClick={click1} className='item item1'>
-                      <div  className="item-left">
-                        <img className='icon' src={reation} alt="brain" />
-                        <h3 className="item-title color1">Reaction</h3>
-                      </div>
-                      <div className='item-right'>
-                        <span className='rating'>{count1}</span>/ 100
-                      </div>
-                    </li>
+                  <li onClick={click1} className='item item1'>
+                    <div className="item-left">
+                      <img className='icon' src={reation} alt="brain" />
+                      <h3 className={`item-title ${count1 === 100 ? 'color1-red' : 'color1'}`}>Reaction</h3>
+                    </div>
+                    <div className='item-right'>
+                      <span className={`rating ${count1 === 100 ? 'color1-red' : ''}`}>{count1}</span>/ 100
+                    </div>
+                  </li>
                     <li onClick={click2}  className='item item2'>
                         <div className="item-left">
                           <img className='icon' src={brain} alt="reation" />
                           <h3 className="item-title color2">Memory</h3>
                         </div>
                         <div className='item-right'>
-                          <span className='rating'>{count2}</span> / 100
+                          <span className={`rating ${count2 === 100 ? 'color1-orange' : ''}`}>{count2}</span> / 100
                         </div>
                     </li>
                     <li onClick={click3} className='item item3'>
@@ -83,7 +112,7 @@ function App() {
                           <h3 className="item-title color3">Verbal</h3>
                         </div>
                         <div className='item-right'>
-                          <span className='rating'>{count3}</span>/ 100
+                          <span className={`rating ${count3 === 100 ? 'color1-green' : ''}`}>{count3}</span>/ 100
                         </div>
                     </li>
                     <li onClick={click4} className='item item4'>
@@ -92,11 +121,11 @@ function App() {
                           <h3 className="item-title color4">Visual</h3>
                         </div>
                         <div className='item-right'>
-                          <span className='rating'>{count4}</span>/ 100
+                          <span className={`rating ${count4 === 100 ? 'color1-blue' : ''}`}>{count4}</span>/ 100
                         </div>
                     </li>
                   </ul>
-                  <button  className='btn' id='btn'>Continue</button>
+                  <button onClick={btnclick} className='btn' id='btn'>Continue</button>
               </div>
       </div>
     </div>
